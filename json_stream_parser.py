@@ -200,7 +200,7 @@ def _maybe_digits(fp) -> Tuple[str, str]:
     s = ''
     while True:
         ch = fp.read(1)
-        if ch in '0123456789':
+        if ch and ch in '0123456789':
             s += ch
         else:
             break
