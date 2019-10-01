@@ -153,7 +153,7 @@ def _load_num(ch: str, fp) -> Tuple[Union[int, float], str]:
     s += digits
 
     # zero is special
-    if is_zero and len(digits) > 0:
+    if is_zero:
         if digits:
             raise JSONDecodeError('digits follows zero')
         return 0, ''
@@ -192,7 +192,8 @@ def _expect_digits(fp):
     if ch not in '0123456789':
         raise JSONDecodeError('expected 0123456789, got: %r', ch)
 
-    return _maybe_digits(fp)
+    digits, next_ch = _maybe_digits(fp)
+    return ch + digits, next_ch
 
 
 def _maybe_digits(fp) -> Tuple[str, str]:
