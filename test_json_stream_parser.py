@@ -9,6 +9,7 @@ def test_ok_coverage():
         0
         -0
         123
+        0.1
         1.2
         1.123
         1.3e9

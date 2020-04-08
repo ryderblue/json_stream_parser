@@ -152,8 +152,8 @@ def _load_num(ch: str, fp) -> Tuple[Union[int, float], str]:
     digits, ch = _maybe_digits(fp)  # NOTE: ch may be ''
     s += digits
 
-    # zero is special
-    if is_zero:
+    # zero is special, when not followed by .
+    if is_zero and ch != '.':
         if digits:
             raise JSONDecodeError('digits follows zero')
         return 0, ''
